@@ -30,4 +30,3 @@ npm run dev
 ![GIT](./image3)
 ![GIT](./image4)
 ![GIT](./image5)
-![GIT](./image6)
