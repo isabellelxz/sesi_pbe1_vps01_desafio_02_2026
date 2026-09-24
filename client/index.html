@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de IA</title>
+</head>
+
+<body>
+
+    <h1>Cadastro de uso de Inteligência Artificial</h1>
+
+    <form id="form">
+
+        <label>Sistema:</label>
+        <input type="text" id="sistema" required>
+        <br><br>
+
+        <label>Tipo:</label>
+        <select id="tipo" required>
+            <option value="">Selecione</option>
+            <option value="empresa">Empresa</option>
+            <option value="escola">Escola</option>
+            <option value="pessoa">Pessoa</option>
+        </select>
+        <br><br>
+
+        <label>Finalidade:</label>
+        <input type="text" id="finalidade" required>
+        <br><br>
+
+        <label>Tecnologia:</label>
+        <input type="text" id="tecnologia" required>
+        <br><br>
+
+        <label>Nível de risco:</label>
+        <select id="nivel_risco" required>
+            <option value="">Selecione</option>
+            <option value="Baixo">Baixo</option>
+            <option value="Médio">Médio</option>
+            <option value="Alto">Alto</option>
+        </select>
+        <br><br>
+
+        <label>Possui revisão humana?</label>
+        <select id="possui_revisao_humana" required>
+            <option value="">Selecione</option>
+            <option value="true">Sim</option>
+            <option value="false">Não</option>
+        </select>
+        <br><br>
+
+        <button type="submit">Cadastrar</button>
+
+    </form>
+
+    <p id="mensagem"></p>
+
+    <script>
+        document.getElementById("form").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const dados = {
+                sistema: document.getElementById("sistema").value,
+                tipo: document.getElementById("tipo").value,
+                finalidade: document.getElementById("finalidade").value,
+                tecnologia: document.getElementById("tecnologia").value,
+                nivel_risco: document.getElementById("nivel_risco").value,
+                possui_revisao_humana: document.getElementById("possui_revisao_humana").value
+            };
+
+            const resposta = await fetch("/api/dados", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dados)
+            });
+
+            const resultado = await resposta.json();
+
+            document.getElementById("mensagem").textContent = resultado.mensagem;
+
+            document.getElementById("form").reset();
+        });
+    </script>
+
+</body>
+</html>
