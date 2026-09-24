@@ -24,3 +24,10 @@ npm run dev
 
 ## Print dos testes e exemplo de requisições
 
+- GIT
+![GIT](./image1)
+![GIT](./image2)
+![GIT](./image3)
+![GIT](./image4)
+![GIT](./image5)
+![GIT](./image6)
